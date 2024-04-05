@@ -1,0 +1,3 @@
+/* 
+    Implementation de la logique du score dependant du temps
+*/

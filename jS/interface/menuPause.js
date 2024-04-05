@@ -1,0 +1,6 @@
+/* 
+    Mettre un petit menu 
+        continue
+        restart
+    et afficher quelque information comme score etc
+*/
