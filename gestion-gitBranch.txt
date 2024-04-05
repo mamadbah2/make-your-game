@@ -1,0 +1,63 @@
+Voici quelques commandes Git couramment utilisées pour travailler avec des branches :
+
+1. **Créer une branche** :
+   ```bash
+   git branch <nom_de_la_branche>
+   ```
+
+2. **Changer de branche** :
+   ```bash
+   git checkout <nom_de_la_branche>
+   ```
+
+3. **Créer une nouvelle branche et se déplacer dessus en une seule commande** :
+   ```bash
+   git checkout -b <nom_de_la_branche>
+   ```
+
+4. **Lister toutes les branches locales** :
+   ```bash
+   git branch
+   ```
+
+5. **Lister toutes les branches (locales et distantes)** :
+   ```bash
+   git branch -a
+   ```
+
+6. **Supprimer une branche locale** :
+   ```bash
+   git branch -d <nom_de_la_branche>
+   ```
+
+7. **Supprimer une branche distante** :
+   ```bash
+   git push origin --delete <nom_de_la_branche>
+   ```
+
+8. **Renommer une branche locale** :
+   ```bash
+   git branch -m <ancien_nom> <nouveau_nom>
+   ```
+
+9. **Fusionner une branche dans la branche actuelle** :
+   ```bash
+   git merge <nom_de_la_branche>
+   ```
+
+10. **Récupérer les modifications d'une branche distante** :
+    ```bash
+    git pull origin <nom_de_la_branche>
+    ```
+
+11. **Pousser une branche locale vers un dépôt distant** :
+    ```bash
+    git push origin <nom_de_la_branche>
+    ```
+
+12. **Voir les branches distantes suivies et leur état** :
+    ```bash
+    git remote show origin
+    ```
+
+Ces commandes devraient couvrir la plupart des opérations courantes liées aux branches Git.
