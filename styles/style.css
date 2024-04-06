@@ -6,7 +6,15 @@
     box-sizing: border-box;
 }
 
+header {
+    height: 100px;
+    background-color: green;
+    margin: 10px;
+}
+
 body {
+    margin: 0;
+    padding: 0;
     background: url('../assets/mainbg.jpeg') no-repeat;
     background-size: cover;
     height: 100vh;
