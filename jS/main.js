@@ -1,1 +1,3 @@
-/* Tout sera appelé là */
+import { grid } from "./component/grid.js";
+
+grid();
