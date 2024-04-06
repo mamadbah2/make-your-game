@@ -1,0 +1,38 @@
+:root {
+    --bloc-size : 40px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: url('../assets/mainbg.jpeg') no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    width: calc(var(--bloc-size)*15);
+    height: calc(var(--bloc-size)*13);
+    margin: auto;
+    background-color: rgb(192, 192, 192);
+}
+
+main div {
+    width: var(--bloc-size);
+    height: var(--bloc-size);
+}
+.b {
+    background: url('../assets/map/bloc.png');
+    background-size: cover;
+}
+.m {
+    background: url('../assets/map/mur.png');
+    background-size: cover;
+}
+.c {
+    background: rgb(72, 141, 72);
+}
