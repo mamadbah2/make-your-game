@@ -1,5 +1,6 @@
 :root {
     --bloc-size : 40px;
+    --animate-transition : 40px
 }
 
 * {
@@ -41,6 +42,63 @@ main div {
     background: url('../assets/map/mur.png');
     background-size: cover;
 }
-.c {
+.c, .cA {
     background: rgb(72, 141, 72);
+}
+.A img {
+    height: calc(var(--bloc-size) - 7px) ;
+}
+
+
+@keyframes moveBlockFromLeft {
+    from {
+        transform: translate(0, 0);
+    }
+    to {
+        transform: translateX(var(--animate-transition)); /* Ajustez ces valeurs selon le déplacement souhaité */
+    }
+}
+
+.move-right img {
+    animation: moveBlockFromLeft 1s ease-in-out; /* 1s est la durée de l'animation, ajustez selon vos besoins */
+}
+
+@keyframes moveBlockFromTop {
+    from {
+        transform: translate(0, 0);
+    }
+    to {
+        transform: translateY(calc(-1 * var(--animate-transition))); /* Ajustez ces valeurs selon le déplacement souhaité */
+    }
+}
+
+.move-up img {
+    animation: moveBlockFromTop 1s ease-in-out; /* 1s est la durée de l'animation, ajustez selon vos besoins */
+}
+
+@keyframes moveBlockFromBottom {
+    from {
+        transform: translate(0, 0);
+    }
+    to {
+        transform: translate(0, var(--animate-transition)); /* Ajustez ces valeurs selon le déplacement souhaité */
+    }
+}
+
+.move-down img {
+    animation: moveBlockFromBottom 1s ease-in-out; /* 1s est la durée de l'animation, ajustez selon vos besoins */
+}
+
+@keyframes moveBlockFromRight {
+    from {
+        transform: translate(0, 0);
+    }
+    to {
+        transform: translate(calc(-1 * var(--animate-transition)), 0); /* Ajustez ces valeurs selon le déplacement souhaité */
+    }
+}
+
+
+.move-left img {
+    animation: moveBlockFromRight 1s ease-in-out; /* 1s est la durée de l'animation, ajustez selon vos besoins */
 }
