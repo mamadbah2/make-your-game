@@ -1,18 +1,27 @@
 import { grid } from "./component/grid.js";
 import { Avatar } from "./component/avatar.js";
+import { Bomb } from "./component/bomb.js";
+
 
 grid();
 
 let actor = new Avatar()
-actor.addAvatarInGrid(16);
+let boom = new Bomb()
+actor.addAvatarInGrid({i : 1, j : 1}, 'Actor');
+const avatarActor = document.getElementById("avatarActor")
+console.log(avatarActor);
 
-const avatar = document.querySelector('main div img')
+document.addEventListener('keyup', (e) => {
+    if (e.key == ' ') {
+        let position = (((actor.posY+40) / 40) * 16) + (actor.posX / 40) - (actor.posY/40)
+        console.log(position);
+        boom.poserBomb(position)
 
-
-document.addEventListener('keydown', (e) => {
-    actor.move(avatar, e.key)
+    } else {
+        actor.move(avatarActor, e.key)
+    }
 })
 
-document.addEventListener('keyup', () => {
+document.addEventListener('space', () => {
 
 })

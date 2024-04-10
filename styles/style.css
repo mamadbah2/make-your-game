@@ -49,56 +49,18 @@ main div img {
     height: calc(var(--bloc-size) - 7px) ;
 }
 
-
-/* @keyframes moveBlockFromLeft {
-    from {
-        transform: translate(0, 0);
-    }
-    to {
-        transform: translateX(var(--animate-transition)); // Ajustez ces valeurs selon le déplacement souhaité 
-    }
+.bomb {
+    animation: bombAnimate 1s infinite linear;
 }
 
-.move-right img {
-    animation: moveBlockFromLeft 1s ease-in-out; //1s est la durée de l'animation, ajustez selon vos besoins 
-}
-
-@keyframes moveBlockFromTop {
-    from {
-        transform: translate(0, 0);
+@keyframes bombAnimate {
+    0% {
+        transform:scale(0.9);
     }
-    to {
-        transform: translateY(calc(-1 * var(--animate-transition))); // Ajustez ces valeurs selon le déplacement souhaité 
+    50% {
+        transform:scale(1);
     }
-}
-
-.move-up img {
-    animation: moveBlockFromTop 1s ease-in-out; 
-}
-
-@keyframes moveBlockFromBottom {
-    from {
-        transform: translate(0, 0);
-    }
-    to {
-        transform: translate(0, var(--animate-transition)); 
+    100% {
+        transform:scale(0.9);
     }
 }
-
-.move-down img {
-    animation: moveBlockFromBottom 1s ease-in-out; 
-}
-
-@keyframes moveBlockFromRight {
-    from {
-        transform: translate(0, 0);
-    }
-    to {
-        transform: translate(calc(-1 * var(--animate-transition)), 0); 
-    }
-}
-
-
-.move-left img {
-    animation: moveBlockFromRight 1s ease-in-out; 
-} */
