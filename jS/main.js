@@ -3,21 +3,16 @@ import { Avatar } from "./component/avatar.js";
 
 grid();
 
-let actor = new Avatar(1,1)
+let actor = new Avatar()
+actor.addAvatarInGrid(16);
 
-actor.addAvatarInPosition();
+const avatar = document.querySelector('main div img')
 
-grid();
 
 document.addEventListener('keydown', (e) => {
-    actor.move(e.key)
-
+    actor.move(avatar, e.key)
 })
 
 document.addEventListener('keyup', () => {
-    actor.addAvatarInPosition()
-    grid()
-    // setTimeout(()=> {
-    //     grid()
-    // }, 1000)
+
 })

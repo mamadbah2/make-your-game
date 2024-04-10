@@ -27,12 +27,6 @@ grid() {
         for (let j = 0; j < originGrid[i].length; j++) {
             const div = document.createElement('div')
             div.className = originGrid[i][j]
-            // s'il y a l'avatar A
-            if (originGrid[i][j].includes('A')) {
-                const imgAvatar = document.createElement('img')
-                imgAvatar.src="./assets/avatar/avatar.png"
-                div.appendChild(imgAvatar)
-            }
             main.appendChild(div)
         }
     }

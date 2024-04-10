@@ -6,9 +6,9 @@
 import { originGrid } from "./grid.js"
 
 export class Avatar {
-    constructor(i, j) {
-        this.posI = i
-        this.posJ = j
+    constructor() {
+        this.posX = 0
+        this.posY = 0
         this.life = 3
     }
 
@@ -32,38 +32,32 @@ export class Avatar {
         }, 1000); */ // Assurez-vous que ce délai correspond à la durée de l'animation CSS
     }
 
-    addAvatarInPosition() {
+    addAvatarInGrid(nthDiv) {
         // Recuperation de l'ancienne coordonnee de l'avatar avec coordinate
-        let coordinate = this.#findValueCoordinates(originGrid, 'A')
-        if (coordinate != null) {
-            // if (coordinate.i != this.posI || coordinate.j != this.posJ) {
-            originGrid[coordinate.i][coordinate.j] = 'c'
-
-            originGrid[this.posI][this.posJ] += ' A '
-
-            // }
-        } else {
-            originGrid[this.posI][this.posJ] += ' A '
-        }
+        const divs = document.querySelector('main').querySelectorAll('div')
+        const iconAvatar = document.createElement('img')
+        iconAvatar.id = `avatar${nthDiv}`
+        iconAvatar.src = "./assets/avatar/avatar.png"
+        divs[nthDiv].appendChild(iconAvatar)
     }
 
-    move(key) {
+    move(avatar, key) {
         switch (key) {
             case 'ArrowUp':
-                this.#movingAnimation('move-up', { i: this.posI, j: this.posJ })
-                this.posI -= 1
+                avatar.style.transform = `translate(${this.posX}px, ${this.posY-40}px)`
+                this.posY -= 40
                 break
             case 'ArrowDown':
-                this.#movingAnimation('move-down', { i: this.posI, j: this.posJ })
-                this.posI += 1
+                avatar.style.transform = `translate(${this.posX}px, ${this.posY+40}px)`
+                this.posY += 40
                 break
             case 'ArrowRight':
-                this.#movingAnimation('move-right', { i: this.posI, j: this.posJ })
-                this.posJ += 1
+                avatar.style.transform = `translate(${this.posX+40}px, ${this.posY}px)`
+                this.posX += 40
                 break
             case 'ArrowLeft':
-                this.#movingAnimation('move-left', { i: this.posI, j: this.posJ })
-                this.posJ -= 1
+                avatar.style.transform = `translate(${this.posX-40}px, ${this.posY}px)`
+                this.posX -= 40
                 break
         }
     }

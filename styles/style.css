@@ -42,25 +42,25 @@ main div {
     background: url('../assets/map/mur.png');
     background-size: cover;
 }
-.c, .cA {
+.c {
     background: rgb(72, 141, 72);
 }
-.A img {
+main div img {
     height: calc(var(--bloc-size) - 7px) ;
 }
 
 
-@keyframes moveBlockFromLeft {
+/* @keyframes moveBlockFromLeft {
     from {
         transform: translate(0, 0);
     }
     to {
-        transform: translateX(var(--animate-transition)); /* Ajustez ces valeurs selon le déplacement souhaité */
+        transform: translateX(var(--animate-transition)); // Ajustez ces valeurs selon le déplacement souhaité 
     }
 }
 
 .move-right img {
-    animation: moveBlockFromLeft 1s ease-in-out; /* 1s est la durée de l'animation, ajustez selon vos besoins */
+    animation: moveBlockFromLeft 1s ease-in-out; //1s est la durée de l'animation, ajustez selon vos besoins 
 }
 
 @keyframes moveBlockFromTop {
@@ -68,12 +68,12 @@ main div {
         transform: translate(0, 0);
     }
     to {
-        transform: translateY(calc(-1 * var(--animate-transition))); /* Ajustez ces valeurs selon le déplacement souhaité */
+        transform: translateY(calc(-1 * var(--animate-transition))); // Ajustez ces valeurs selon le déplacement souhaité 
     }
 }
 
 .move-up img {
-    animation: moveBlockFromTop 1s ease-in-out; /* 1s est la durée de l'animation, ajustez selon vos besoins */
+    animation: moveBlockFromTop 1s ease-in-out; 
 }
 
 @keyframes moveBlockFromBottom {
@@ -81,12 +81,12 @@ main div {
         transform: translate(0, 0);
     }
     to {
-        transform: translate(0, var(--animate-transition)); /* Ajustez ces valeurs selon le déplacement souhaité */
+        transform: translate(0, var(--animate-transition)); 
     }
 }
 
 .move-down img {
-    animation: moveBlockFromBottom 1s ease-in-out; /* 1s est la durée de l'animation, ajustez selon vos besoins */
+    animation: moveBlockFromBottom 1s ease-in-out; 
 }
 
 @keyframes moveBlockFromRight {
@@ -94,11 +94,11 @@ main div {
         transform: translate(0, 0);
     }
     to {
-        transform: translate(calc(-1 * var(--animate-transition)), 0); /* Ajustez ces valeurs selon le déplacement souhaité */
+        transform: translate(calc(-1 * var(--animate-transition)), 0); 
     }
 }
 
 
 .move-left img {
-    animation: moveBlockFromRight 1s ease-in-out; /* 1s est la durée de l'animation, ajustez selon vos besoins */
-}
+    animation: moveBlockFromRight 1s ease-in-out; 
+} */
