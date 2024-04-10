@@ -38,26 +38,40 @@ export class Avatar {
         const iconAvatar = document.createElement('img')
         iconAvatar.id = `avatar${nthDiv}`
         iconAvatar.src = "./assets/avatar/avatar.png"
+        iconAvatar.style.transition = "transform 100ms linear"
         divs[nthDiv].appendChild(iconAvatar)
     }
 
     move(avatar, key) {
+        // Erreur de calcul... Les x et y ont été intervertis
         switch (key) {
             case 'ArrowUp':
-                avatar.style.transform = `translate(${this.posX}px, ${this.posY-40}px)`
-                this.posY -= 40
+                console.log((this.posX+40)/40, this.posY/40, originGrid[this.posY/40][(this.posX+40)/40]);
+                if (originGrid[this.posY/40][(this.posX+40)/40] === 'c' ) {
+                    avatar.style.transform = `translate(${this.posX}px, ${this.posY-40}px)`
+                    this.posY -= 40
+                }
                 break
             case 'ArrowDown':
-                avatar.style.transform = `translate(${this.posX}px, ${this.posY+40}px)`
-                this.posY += 40
+                console.log((this.posX+40)/40, (this.posY+80)/40, originGrid[(this.posY+80)/40][(this.posX+40)/40]);
+                if (originGrid[(this.posY+80)/40][(this.posX+40)/40] === 'c') {
+                    avatar.style.transform = `translate(${this.posX}px, ${this.posY+40}px)`
+                    this.posY += 40
+                }
                 break
             case 'ArrowRight':
-                avatar.style.transform = `translate(${this.posX+40}px, ${this.posY}px)`
-                this.posX += 40
+                console.log((this.posX+80)/40, "x", (this.posY+40)/40,"y ", originGrid[(this.posY+40)/40][(this.posX+120)/40]);
+                if (originGrid[(this.posY+40)/40][(this.posX+80)/40] === 'c') {
+                    avatar.style.transform = `translate(${this.posX+40}px, ${this.posY}px)`
+                    this.posX += 40
+                }
                 break
             case 'ArrowLeft':
-                avatar.style.transform = `translate(${this.posX-40}px, ${this.posY}px)`
-                this.posX -= 40
+                console.log((this.posX)/40, "x", this.posY+40/40,"y ", originGrid[(this.posY+40)/40][(this.posX)/40]);
+                if (originGrid[(this.posY+40)/40][this.posX/40] === 'c') {
+                    avatar.style.transform = `translate(${this.posX-40}px, ${this.posY}px)`
+                    this.posX -= 40
+                }
                 break
         }
     }

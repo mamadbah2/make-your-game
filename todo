@@ -1,5 +1,7 @@
 Whatsapp
 Lien du git où on prend les images ressource : https://github.com/pr0mming/Bomberman-JS/tree/master/resources/enemies
 
---> J'ai fait la map 2d où les joueurs se deplaceront. 
---> Dans la prochaine etape il s'agira de travailler sur l'avatar ses deplacements etc ...
+--> J'ai fait la map 2d où les joueurs se deplaceront. (validé)
+--> Dans la prochaine etape il s'agira de travailler sur l'avatar ses deplacements etc ... (validé)
+--> Ensuite on gere les collision avec les murs et tout (validé)
+--> Maintenant on se focalise sur la bombe 
