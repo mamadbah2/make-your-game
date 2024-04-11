@@ -47,9 +47,11 @@ main div {
 }
 main div img {
     height: calc(var(--bloc-size) - 7px) ;
+    
 }
 
 .bomb {
+    z-index: 50;
     animation: bombAnimate 1s infinite linear;
 }
 

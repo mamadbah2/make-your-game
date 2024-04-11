@@ -5,13 +5,13 @@ import { Bomb } from "./component/bomb.js";
 
 grid();
 
-let actor = new Avatar()
+let actor = new Avatar(1, 1)
 let boom = new Bomb()
-actor.addAvatarInGrid({i : 1, j : 1}, 'Actor');
+actor.addAvatarInGrid('Actor');
 const avatarActor = document.getElementById("avatarActor")
 console.log(avatarActor);
 
-document.addEventListener('keyup', (e) => {
+document.addEventListener('keydown', (e) => {
     if (e.key == ' ') {
         let position = (((actor.posY+40) / 40) * 16) + (actor.posX / 40) - (actor.posY/40)
         console.log(position);

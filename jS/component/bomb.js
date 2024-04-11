@@ -8,9 +8,12 @@ export class Bomb {
         const iconBomb = document.createElement('img')
         iconBomb.src = "assets/bomb/bomb.png"
         iconBomb.className = "bomb"
-        console.log(divs[position].innerHTML);
-        if (divs[position].innerHTML == '' || divs[position].innerHTML.includes('avatar')) {
+        if (divs[position].innerHTML == '' ) {
             divs[position].appendChild(iconBomb)
         }
+    }
+
+    #exploserBomb() {
+        
     }
 }
