@@ -16,8 +16,8 @@ lifeScore(actor)
 
 document.addEventListener('keyup', (e) => {
     if (e.key == ' ') { 
-        let position = (((actor.posY+40) / 40) * 16) + (actor.posX / 40) - (actor.posY/40)
-        console.log(position);
+        let position = ((( (actor.initY*40) + actor.posY) / 40) * 16) + (((actor.initX*40) +actor.posX) / 40) - (( (actor.initY*40) + actor.posY)/40)
+        console.log('nbre', position);
         boom.poserBomb(position, actor)
     } else {
         actor.move(avatarActor, e.key)
