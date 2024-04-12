@@ -2,11 +2,16 @@ import { originGrid } from "./grid.js"
 
 export class Bomb {
     constructor() {
-        this.max = 20
+        this.max = 30
         this.delay = 2000 // en milliseconde
     }
-
+    canCall = true
     poserBomb(position) {
+        if (!this.canCall) {
+            console.log("Trop tot boy");
+            return
+        }
+
         if (this.max > 0) {
             const divs = document.querySelector('main').querySelectorAll('div')
             const iconBomb = document.createElement('img')
@@ -23,6 +28,12 @@ export class Bomb {
         } else {
             alert("Stock de bombe épuisé")
         }
+        /* Logique Debounce : est une technique utilisée pour limiter la
+         fréquence à laquelle une fonction peut être appelée  */
+        this.canCall = false
+        setTimeout(()=>{
+            this.canCall = true
+        }, this.delay)
     }
 
     #exploserBomb(nodes, position) {

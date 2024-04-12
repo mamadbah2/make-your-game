@@ -11,7 +11,7 @@ actor.addAvatarInGrid('Actor');
 const avatarActor = document.getElementById("avatarActor")
 console.log(avatarActor);
 
-document.addEventListener('keydown', (e) => {
+document.addEventListener('keyup', (e) => {
     if (e.key == ' ') {
         let position = (((actor.posY+40) / 40) * 16) + (actor.posX / 40) - (actor.posY/40)
         console.log(position);
