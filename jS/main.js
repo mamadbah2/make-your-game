@@ -1,10 +1,11 @@
 import { grid } from "./component/grid.js";
 import { Avatar, ennemies } from "./component/avatar.js";
 import { Bomb } from "./component/bomb.js";
-import { lifeScore } from "./interface/barreScore.js";
+import { lifeScore, chronometre } from "./interface/barreScore.js";
 
 
 grid();
+chronometre();
 
 let actor = new Avatar(1, 1)
 let boom = new Bomb()

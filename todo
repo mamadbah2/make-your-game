@@ -6,4 +6,7 @@ Lien du git où on prend les images ressource : https://github.com/pr0mming/Bomb
 --> Ensuite on gere les collision avec les murs et tout (validé)
 --> Maintenant on se focalise sur la bombe (validé)
 --> Limiter le nombre de bombe et reduire la life du gars s'il se situe dans le champ de portée (validé)
---> Ajouter des ennemies qui bouge tout seul
+--> Ajouter des ennemies qui bouge tout seul (validé)
+--> Les ennemis peuvent etre tué par des bombes (validé)
+--> Diminuer la vie de l'acteur lorqu'on croise un ennemi
+--> Etablir la logique des bonus

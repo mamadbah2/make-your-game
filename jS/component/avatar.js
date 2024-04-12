@@ -64,7 +64,7 @@ export class Avatar {
 
 export function ennemies() {
     // let arrayOfGhost = [new Avatar(1, 1)]
-    let arrayOfGhost = [new Avatar(1, 11), new Avatar(13, 1), new Avatar(11, 8)]
+    let arrayOfGhost = [new Avatar(1, 11), new Avatar(13, 1), new Avatar(11, 8), new Avatar(3, 1)]
     let arrayEltGhost = []
     for (let i = 0; i < arrayOfGhost.length; i++) {
         arrayOfGhost[i].addAvatarInGrid(`Bad${i}`, `ennemi`)
@@ -74,13 +74,9 @@ export function ennemies() {
     let direction = ['ArrowUp', 'ArrowDown', 'ArrowRight', 'ArrowLeft']
     arrayOfGhost.map((ghost, index) => {
         setInterval(()=> {
-            ghost.move(arrayEltGhost[index], direction[Math.floor(Math.random() * 4) + 1])
+            ghost.move(arrayEltGhost[index], direction[Math.floor(Math.random() * 4)])
         }, 500)
     })
 
-}
-
-function moveEnnemies() {
-    
 }
 

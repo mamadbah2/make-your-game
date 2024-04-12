@@ -40,13 +40,18 @@ export class Bomb {
     }
 
     #exploserBomb(nodes, position, actor) {
+        // On enleve d'abord la bombe
         nodes[position].removeChild(nodes[position].firstChild) 
-        
-        const avatar = nodes[0].firstChild
-        let xyActor = avatar.style.transform.match(/(-?\d+(?:\.\d+)?)/g)
-        let xAct = parseInt(xyActor[0]) , yAct = parseInt(xyActor[1])
-        console.log((((yAct+40) / 40) * 16) + (xAct / 40) - (yAct/40) - 16)
-        let actorPos = (((yAct+40) / 40) * 16) + (xAct / 40) - (yAct/40) - 16
+
+        // On recupere tous les avatars et leur position
+        const allAvatar = nodes[0].querySelectorAll('img')
+        let avatarPos = []
+        for (let i = 0; i < allAvatar.length; i++) {
+            let xyAvatar = allAvatar[i].style.transform.match(/(-?\d+(?:\.\d+)?)/g)
+            let xAvat = parseInt(xyAvatar[0]) , yAvat = parseInt(xyAvatar[1])
+            avatarPos.push((((yAvat+40) / 40) * 16) + (xAvat / 40) - (yAvat/40) - 16)
+        }
+
         // Cassage des murs etc
         this.#boom(nodes[position])
         if (nodes[position + 1].className == 'c' || nodes[position + 1].className == 'm') {
@@ -68,9 +73,17 @@ export class Bomb {
             this.#boom(nodes[position + 15])
         }
         // On diminue la vie du joueur s'il se trouve dans le champ de porté
+        let actorPos = avatarPos[0]
         if (actorPos == position+1 || actorPos == position-1 || actorPos == position + 15 || actorPos == position - 15 || actorPos == position) {
             actor.life--
             lifeScore(actor)
+        }
+
+        // On kill l'ennemi s'il est dans les parages, à i=0 on l'acteur 
+        for (let i = 1; i < avatarPos.length; i++) {
+            if (avatarPos[i] == position+1 || avatarPos[i] == position-1 || avatarPos[i] == position + 15 || avatarPos[i] == position - 15 || avatarPos[i] == position ) {
+                allAvatar[i].remove()
+            }
         }
     }
 
