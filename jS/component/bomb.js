@@ -1,12 +1,15 @@
 import { originGrid } from "./grid.js"
+import { lifeScore } from "../interface/barreScore.js"
 
 export class Bomb {
     constructor() {
         this.max = 30
         this.delay = 2000 // en milliseconde
     }
+
+
     canCall = true
-    poserBomb(position) {
+    poserBomb(position, actor) {
         if (!this.canCall) {
             console.log("Trop tot boy");
             return
@@ -21,7 +24,7 @@ export class Bomb {
                 divs[position].appendChild(iconBomb)
             }
             setTimeout(() => {
-                this.#exploserBomb(divs, position)
+                this.#exploserBomb(divs, position, actor)
     
             }, this.delay)
             this.max--;
@@ -36,9 +39,16 @@ export class Bomb {
         }, this.delay)
     }
 
-    #exploserBomb(nodes, position) {
+    #exploserBomb(nodes, position, actor) {
         nodes[position].removeChild(nodes[position].firstChild) 
-     // Cassage des murs etc
+        
+        const avatar = nodes[0].firstChild
+        let xyActor = avatar.style.transform.match(/(-?\d+(?:\.\d+)?)/g)
+        let xAct = parseInt(xyActor[0]) , yAct = parseInt(xyActor[1])
+        console.log((((yAct+40) / 40) * 16) + (xAct / 40) - (yAct/40) - 16)
+        let actorPos = (((yAct+40) / 40) * 16) + (xAct / 40) - (yAct/40) - 16
+        // Cassage des murs etc
+        this.#boom(nodes[position])
         if (nodes[position + 1].className == 'c' || nodes[position + 1].className == 'm') {
             this.#boom(nodes[position + 1])
             originGrid[Math.floor((position + 1) / 15)][(position + 1) % 15] = 'c'
@@ -56,6 +66,11 @@ export class Bomb {
             console.log(Math.floor((position + 15) / 15), (position + 15) % 15, originGrid[Math.floor((position + 15) / 15)][(position + 15) % 15]);
             originGrid[Math.floor((position + 15) / 15)][(position + 15) % 15] = 'c'
             this.#boom(nodes[position + 15])
+        }
+        // On diminue la vie du joueur s'il se trouve dans le champ de porté
+        if (actorPos == position+1 || actorPos == position-1 || actorPos == position + 15 || actorPos == position - 15 || actorPos == position) {
+            actor.life--
+            lifeScore(actor)
         }
     }
 

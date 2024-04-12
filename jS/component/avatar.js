@@ -8,19 +8,19 @@ import { originGrid } from "./grid.js"
 export class Avatar {
     #blocSize = 40
     constructor(x, y) {
-        this.initX = x
+        this.initX = x // coordonnee de la case de depart genre (0, 1) ou (2...
         this.initY = y
         this.posX = 0
         this.posY = 0
         this.life = 3
     }
 
-    addAvatarInGrid(actorID) {
+    addAvatarInGrid(actorID, avatar) {
         // Recuperation de l'ancienne coordonnee de l'avatar avec coordinate
         const div = document.querySelector('main > div')
         const iconAvatar = document.createElement('img')
         iconAvatar.id = `avatar${actorID}`
-        iconAvatar.src = "./assets/avatar/avatar.png"
+        iconAvatar.src = `./assets/avatar/${avatar}.png`
         iconAvatar.style.transform = `translate(${this.initX * this.#blocSize}px, ${this.initY * 40}px)`
         iconAvatar.style.transition = "transform 100ms linear"
         div.appendChild(iconAvatar)
@@ -59,6 +59,15 @@ export class Avatar {
                 }
                 break
         }
+    }
+}
+
+export function ennemies() {
+    let arrayOfGhost = [new Avatar(1, 11), new Avatar(13, 1), new Avatar(11, 8)]
+    let direction = ['ArrowUp', 'ArrowDown', 'ArrowRight', 'ArrowLeft']
+    for (let i = 0; i < arrayOfGhost.length; i++) {
+        arrayOfGhost[i].addAvatarInGrid(`Bad${i}`, `ennemi`)
+        
     }
 }
 

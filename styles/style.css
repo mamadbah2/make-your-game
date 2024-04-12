@@ -5,17 +5,11 @@
 
 * {
     box-sizing: border-box;
-}
-
-header {
-    height: 100px;
-    background-color: green;
-    margin: 10px;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    margin: 0;
-    padding: 0;
     background: url('../assets/mainbg.jpeg') no-repeat;
     background-size: cover;
     height: 100vh;
@@ -34,6 +28,9 @@ main div {
     width: var(--bloc-size);
     height: var(--bloc-size);
 }
+main > div img {
+    position: absolute;
+}
 .b {
     background: url('../assets/map/bloc.png');
     background-size: cover;
@@ -46,7 +43,7 @@ main div {
     background: rgb(72, 141, 72);
 }
 main div img {
-    height: calc(var(--bloc-size) - 7px) ;
+    height: calc(var(--bloc-size) - 3px) ;
     
 }
 
@@ -65,4 +62,21 @@ main div img {
     100% {
         transform:scale(0.9);
     }
+}
+
+/* Mis en forme de la barre de score  */
+
+header {
+    background-color: rgba(164, 164, 164, 0.5);
+    margin-bottom: 30px;
+}
+
+header ul {
+    list-style: none;
+    padding: 10px 17px;
+}
+header ul li {
+    color: rgb(66, 62, 62);
+    font-size: 2em;
+    font-weight: bold;
 }
