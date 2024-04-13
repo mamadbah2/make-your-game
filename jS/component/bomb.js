@@ -79,11 +79,12 @@ export class Bomb {
             updateLifeScore(actor)
         }
 
-        // On kill l'ennemi s'il est dans les parages, à i=0 on l'acteur
+        // On kill l'ennemi s'il est dans les parages, à i=0 on a l'acteur
         console.log('Avatar lenght', avatarPos); 
         for (let i = 1; i < avatarPos.length; i++) {
             if (avatarPos[i] == position+1 || avatarPos[i] == position-1 || avatarPos[i] == position + 15 || avatarPos[i] == position - 15 || avatarPos[i] == position ) {
                 allAvatar[i].style.display = 'none'
+                arrayOfGhost[i-1].life = 0
                 clearInterval(intervalIDs[i-1])
             }
         }
