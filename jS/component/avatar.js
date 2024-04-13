@@ -32,6 +32,7 @@ export class Avatar {
     }
 
     canCall = true
+    
     move(avatar, key) {
         if (!this.canCall) {
             console.log('Bouge Pas trop vite boy');

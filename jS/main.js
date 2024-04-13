@@ -20,7 +20,7 @@ document.addEventListener('keydown', (e) => {
         actor.move(avatarActor, e.key)
         // On regarde tranquille si on a pas plongé sur un ennemi
         for (let i = 0; i < arrayOfGhost.length; i++) {
-            if (arrayOfGhost[i].position() == actor.position()) {
+            if (arrayOfGhost[i].position() == actor.position() && arrayOfGhost[i].life != 0) {
                 updateLifeScore(actor)
             }
         }
