@@ -1,5 +1,6 @@
 import { originGrid } from "./grid.js"
-import { lifeScore } from "../interface/barreScore.js"
+import { updateLifeScore } from "../interface/barreScore.js"
+import { arrayOfGhost, intervalIDs } from "./avatar.js"
 
 export class Bomb {
     constructor() {
@@ -24,7 +25,7 @@ export class Bomb {
                 divs[position].appendChild(iconBomb)
             }
             setTimeout(() => {
-                this.#exploserBomb(divs, position, actor)
+                this.#exploserBomb(divs, position, actor, arrayOfGhost)
     
             }, this.delay)
             this.max--;
@@ -75,14 +76,15 @@ export class Bomb {
         // On diminue la vie du joueur s'il se trouve dans le champ de porté
         let actorPos = avatarPos[0]
         if (actorPos == position+1 || actorPos == position-1 || actorPos == position + 15 || actorPos == position - 15 || actorPos == position) {
-            actor.life--
-            lifeScore(actor)
+            updateLifeScore(actor)
         }
 
-        // On kill l'ennemi s'il est dans les parages, à i=0 on l'acteur 
+        // On kill l'ennemi s'il est dans les parages, à i=0 on l'acteur
+        console.log('Avatar lenght', avatarPos); 
         for (let i = 1; i < avatarPos.length; i++) {
             if (avatarPos[i] == position+1 || avatarPos[i] == position-1 || avatarPos[i] == position + 15 || avatarPos[i] == position - 15 || avatarPos[i] == position ) {
-                allAvatar[i].remove()
+                allAvatar[i].style.display = 'none'
+                clearInterval(intervalIDs[i-1])
             }
         }
     }

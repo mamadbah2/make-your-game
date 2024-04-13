@@ -1,8 +1,7 @@
 import { grid } from "./component/grid.js";
-import { Avatar, ennemies } from "./component/avatar.js";
+import { Avatar, ennemies, arrayOfGhost } from "./component/avatar.js";
 import { Bomb } from "./component/bomb.js";
-import { lifeScore, chronometre } from "./interface/barreScore.js";
-
+import { updateLifeScore, chronometre, domLifeScore } from "./interface/barreScore.js";
 
 grid();
 chronometre();
@@ -11,20 +10,22 @@ let actor = new Avatar(1, 1)
 let boom = new Bomb()
 actor.addAvatarInGrid('Actor', 'actor');
 const avatarActor = document.getElementById("avatarActor");
-ennemies()
+domLifeScore(actor)
 
-lifeScore(actor)
-
-document.addEventListener('keyup', (e) => {
+document.addEventListener('keydown', (e) => {
     if (e.key == ' ') { 
-        let position = ((( (actor.initY*40) + actor.posY) / 40) * 16) + (((actor.initX*40) +actor.posX) / 40) - (( (actor.initY*40) + actor.posY)/40)
-        console.log('nbre', position);
-        boom.poserBomb(position, actor)
+        console.log('nbre', actor.position());
+        boom.poserBomb(actor.position(), actor)
     } else {
         actor.move(avatarActor, e.key)
+        // On regarde tranquille si on a pas plongé sur un ennemi
+        for (let i = 0; i < arrayOfGhost.length; i++) {
+            if (arrayOfGhost[i].position() == actor.position()) {
+                updateLifeScore(actor)
+            }
+        }
     }
-})
+}) 
 
-document.addEventListener('space', () => {
 
-})
+ennemies(actor)
