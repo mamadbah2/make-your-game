@@ -17,7 +17,7 @@ export let originGrid = [
 export function 
 grid() {
     /* 
-        b -> bloc, m -> mur, c -> chemin
+        b -> bloc, m -> mur, c -> chemin, x -> bonus
     */
 
     const main = document.querySelector('main')
