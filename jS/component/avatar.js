@@ -6,6 +6,7 @@
 import { originGrid } from "./grid.js"
 import { updateLifeScore } from "../interface/barreScore.js"
 import { domNombreBombe } from "../interface/barreScore.js"
+import { pause } from "../interface/menuPause.js"
 
 export class Avatar {
     #blocSize = 40
@@ -71,8 +72,8 @@ export class Avatar {
                 break
         }
         this.canCall = false
-        setTimeout(()=> {
-            this.canCall =true
+        setTimeout(() => {
+            this.canCall = true
         }, 200)
     }
 
@@ -101,17 +102,49 @@ export function ennemies(actor, create = true) {
 
     let direction = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight']
     arrayOfGhost.map((ghost, index) => {
-        intervalIDs[index] = setInterval(() => {
+        let counter = 0
+        intervalIDs[index] = requestAnimationFrame(() => {
+                
+                moveIt(ghost, index, counter)
+            
+            })
+    });
+
+    function moveIt(ghost, index, counter) {
+        counter++
+        if (counter % 24 == 0 && !pause) {
             ghost.move(arrayEltGhost[index], direction[Math.floor(Math.random() * 4)])
             let posiActor = actor.position()
             let posiGhost = ghost.position()
 
-            if (posiActor == posiGhost ) {
+            if (posiActor == posiGhost) {
                 updateLifeScore(actor)
             }
-        }, 400)
+        }
+        requestAnimationFrame(() => {
+            moveIt(ghost, index, counter)
+        })
+    }
 
+}
+/* arrayOfGhost.map((ghost, index) => {
+    intervalIDs[index] = setInterval(() => {
+        ghost.move(arrayEltGhost[index], direction[Math.floor(Math.random() * 4)])
+        let posiActor = actor.position()
+        let posiGhost = ghost.position()
+        
+        if (posiActor == posiGhost ) {
+            updateLifeScore(actor)
+        }
+    }, 400)
+    
+}) */
+
+function test(counter) {
+    counter++
+    if (counter % 24 == 0) console.log('bonjour');
+    requestAnimationFrame(() => {
+        test(counter)
     })
-
 }
 

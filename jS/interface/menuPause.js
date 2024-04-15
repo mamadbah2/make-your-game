@@ -7,14 +7,17 @@
 import { ennemies, intervalIDs } from "../component/avatar.js";
 import { keyHandler } from "../main.js";
 import { chronoId, chronometre } from "./barreScore.js";
+export let pause= false
+
 
 export function gameOver(lifeScore, message = '') {
     const divPause = document.getElementById('Pause')
     // J'sais pas pourquoi c'est toussss
     if (lifeScore === 1) {
         for (let i = 0; i < intervalIDs.length; i++) {
-            clearInterval(intervalIDs[i])
+            cancelAnimationFrame(intervalIDs[i])
         }
+        pause = true
         clearInterval(chronoId)
         document.removeEventListener('keydown', keyHandler)
         document.querySelector('#chronometre').innerHTML = 'Time : <span>00:00</span> '
@@ -27,9 +30,9 @@ export function gameOver(lifeScore, message = '') {
 
 export function pauseGame(actor) {
     const divPause = document.getElementById('Pause')
-
+    pause = true
     for (let i = 0; i < intervalIDs.length; i++) {
-        clearInterval(intervalIDs[i])
+        cancelAnimationFrame(intervalIDs[i])
     }
     clearInterval(chronoId)
     showPauseWindow(divPause)
@@ -38,6 +41,7 @@ export function pauseGame(actor) {
     divPause.querySelector('#Resume').addEventListener('click', ()=> {
         hidePauseWindow(divPause);
         document.addEventListener('keydown', keyHandler)
+        pause = false
         ennemies(actor, false)
         chronometre()
     })
@@ -52,8 +56,9 @@ export function winner() {
     const score = document.querySelector('#score span')
     let valueScore = parseInt(score.textContent) 
     for (let i = 0; i < intervalIDs.length; i++) {
-        clearInterval(intervalIDs[i])
+        cancelAnimationFrame(intervalIDs[i])
     }
+    pause = true
     clearInterval(chronoId)
     showWinnerWindow(divPause, valueScore)
     document.removeEventListener('keydown', keyHandler)
