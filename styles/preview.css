@@ -253,11 +253,7 @@ body {
 
 .transparent-button {
   background-color: transparent;
-  /* Définit la couleur d'arrière-plan comme transparente */
   border: none;
-  /* Supprime les bordures */
   outline: none;
-  /* Supprime la bordure de focus */
   cursor: pointer;
-  /* Change le curseur au survol */
 }
