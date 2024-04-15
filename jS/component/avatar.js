@@ -5,6 +5,7 @@
 */
 import { originGrid } from "./grid.js"
 import { updateLifeScore } from "../interface/barreScore.js"
+import { domNombreBombe } from "../interface/barreScore.js"
 
 export class Avatar {
     #blocSize = 40
@@ -13,7 +14,7 @@ export class Avatar {
         this.initY = y
         this.posX = 0
         this.posY = 0
-        this.life = 3
+        this.life = 15
     }
 
     position() {
@@ -30,6 +31,7 @@ export class Avatar {
         iconAvatar.style.transition = "transform 100ms linear"
         div.appendChild(iconAvatar)
     }
+
 
     canCall = true
     move(avatar, key) {
@@ -73,17 +75,28 @@ export class Avatar {
             this.canCall =true
         }, 200)
     }
+
+    takePowerUpBomb(divs, bomb) {
+        if (divs[this.position()].dataset.powerUp == 'bombe') {
+            bomb.max += 5
+            divs[this.position()].dataset.powerUp = ''
+            divs[this.position()].textContent = ''
+            domNombreBombe(bomb)
+        }
+    }
 }
 
 export const arrayOfGhost = [new Avatar(1, 11), new Avatar(13, 1), new Avatar(11, 8), new Avatar(3, 1)]
 export const intervalIDs = []
+let arrayEltGhost = []
 
-export function ennemies(actor) {
+export function ennemies(actor, create = true) {
     // Mis en place de la logique ennemi
-    let arrayEltGhost = []
-    for (let i = 0; i < arrayOfGhost.length; i++) {
-        arrayOfGhost[i].addAvatarInGrid(`Bad${i}`, `ennemi`)
-        arrayEltGhost.push(document.querySelector(`#avatarBad${i}`))
+    if (create) {
+        for (let i = 0; i < arrayOfGhost.length; i++) {
+            arrayOfGhost[i].addAvatarInGrid(`Bad${i}`, `ennemi`)
+            arrayEltGhost.push(document.querySelector(`#avatarBad${i}`))
+        }
     }
 
     let direction = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight']

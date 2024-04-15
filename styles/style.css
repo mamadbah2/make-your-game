@@ -1,6 +1,6 @@
 :root {
-    --bloc-size : 40px;
-    --animate-transition : 40px
+    --bloc-size: 40px;
+    --animate-transition: 40px
 }
 
 * {
@@ -28,23 +28,28 @@ main div {
     width: var(--bloc-size);
     height: var(--bloc-size);
 }
-main > div img {
+
+main>div img {
     position: absolute;
 }
+
 .b {
     background: url('../assets/map/bloc.png');
     background-size: cover;
 }
+
 .m {
     background: url('../assets/map/mur.png');
     background-size: cover;
 }
+
 .c {
     background: rgb(72, 141, 72);
 }
+
 main div img {
-    height: calc(var(--bloc-size) - 3px) ;
-    
+    height: calc(var(--bloc-size) - 3px);
+
 }
 
 .bomb {
@@ -54,13 +59,15 @@ main div img {
 
 @keyframes bombAnimate {
     0% {
-        transform:scale(0.9);
+        transform: scale(0.9);
     }
+
     50% {
-        transform:scale(1);
+        transform: scale(1);
     }
+
     100% {
-        transform:scale(0.9);
+        transform: scale(0.9);
     }
 }
 
@@ -75,8 +82,115 @@ header ul {
     list-style: none;
     padding: 10px 17px;
 }
+
 header ul li {
     color: rgb(66, 62, 62);
     font-size: .9em;
     font-weight: bold;
+}
+
+/* Mis en forme du menu pause  */
+
+/* #Pause button {
+    color: #090909;
+    padding: 0.7em 1.7em;
+    font-size: 18px;
+    border-radius: 0.5em;
+    background: #e8e8e8;
+    cursor: pointer;
+    border: 1px solid #e8e8e8;
+    transition: all 0.3s;
+    box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+  }
+  
+  #Pause button:hover {
+    border: 1px solid white;
+  }
+  
+  #Pause button:active {
+    box-shadow: 4px 4px 12px #c5c5c5, -4px -4px 12px #ffffff;
+  }
+   */
+
+#Pause {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    backdrop-filter: blur(10px);
+    border: 2px solid #000;
+}
+
+#Pause .cards {
+    margin: 18% auto;
+    width: fit-content;
+
+}
+
+#Pause button {
+    border: none;
+}
+
+.cards {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.cards .red {
+    background-color: rgb(72, 141, 72);
+}
+
+.cards .blue {
+    background-color: #f43f5e;
+}
+
+.cards .green {
+    background-color: #22c55e;
+}
+
+.cards h1 {
+    text-shadow: 3px -1px 3px #000;
+}
+
+.win {
+    color: rgb(72, 141, 72);
+}
+
+.lose {
+    color: #f43f5e;
+}
+
+.cards .card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    height: 100px;
+    width: 250px;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    transition: 400ms;
+}
+
+.cards .card p.tip {
+    font-size: 1em;
+    font-weight: 700;
+}
+
+.cards .card p.second-text {
+    font-size: .7em;
+}
+
+.cards .card:hover {
+    transform: scale(1.1, 1.1);
+}
+
+.cards:hover>.card:not(:hover) {
+    filter: blur(10px);
+    transform: scale(0.9, 0.9);
 }
