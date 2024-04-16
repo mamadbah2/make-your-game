@@ -11,7 +11,7 @@ chronometre();
 ajoutPowersUp();
 
 let actor = new Avatar(1, 1)
-let boom = new Bomb()
+export let boom = new Bomb()
 
 
 actor.addAvatarInGrid('Actor', 'actor');
@@ -23,7 +23,6 @@ domNombreBombe(boom)
 let counter = 0
 export function keyHandler(e) {
     if (e.key == ' ') {
-        console.log('nbre', actor.position());
         boom.poserBomb(divs, actor.position(), actor)
         domNombreBombe(boom)
     } else if (e.key == 'Escape') {

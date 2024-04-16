@@ -4,8 +4,9 @@
         restart
     et afficher quelque information comme score etc
 */
-import { ennemies, intervalIDs } from "../component/avatar.js";
-import { keyHandler } from "../main.js";
+import { intervalIDs } from "../component/avatar.js";
+import { argBombe, detonationID } from "../component/bomb.js";
+import { boom, keyHandler } from "../main.js";
 import { chronoId, chronometre } from "./barreScore.js";
 export let pause= false
 
@@ -34,15 +35,18 @@ export function pauseGame(actor) {
     for (let i = 0; i < intervalIDs.length; i++) {
         cancelAnimationFrame(intervalIDs[i])
     }
+
     clearInterval(chronoId)
     showPauseWindow(divPause)
     document.removeEventListener('keydown', keyHandler)
+    clearTimeout(detonationID)
 
     divPause.querySelector('#Resume').addEventListener('click', ()=> {
         hidePauseWindow(divPause);
         document.addEventListener('keydown', keyHandler)
         pause = false
-        // ennemies(actor, false)
+        boom.max++
+        boom.poserBomb(...argBombe, actor)
         chronometre()
     })
 

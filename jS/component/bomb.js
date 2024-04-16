@@ -4,6 +4,8 @@ import { arrayOfGhost, intervalIDs } from "./avatar.js"
 import { gameOver, winner } from "../interface/menuPause.js"
 import { playSound } from "../interface/sound.js"
 
+export let detonationID = 0
+export let argBombe = []
 let deathCounter = 0
 export class Bomb {
     constructor() {
@@ -26,9 +28,11 @@ export class Bomb {
             if (divs[position].innerHTML == '') {
                 divs[position].appendChild(iconBomb)
             }
-            setTimeout(() => {
+            argBombe =[divs, position] 
+            detonationID = setTimeout(() => {
                 this.#exploserBomb(divs, position, actor, arrayOfGhost)
-
+                detonationID = 0
+                argBombe = []
             }, this.delay)
             this.max--;
         } else {
@@ -69,12 +73,12 @@ export class Bomb {
             originGrid[Math.floor((position - 1) / 15)][(position - 1) % 15] = 'c'
         }
         if (nodes[position - 15].className == 'c' || nodes[position - 15].className == 'm') {
-            console.log(Math.floor((position - 15) / 15), (position - 15) % 15, originGrid[Math.floor((position - 15) / 15)][(position - 15) % 15]);
+            // console.log(Math.floor((position - 15) / 15), (position - 15) % 15, originGrid[Math.floor((position - 15) / 15)][(position - 15) % 15]);
             originGrid[Math.floor((position - 15) / 15)][(position - 15) % 15] = 'c'
             this.#boom(nodes[position - 15])
         }
         if (nodes[position + 15].className == 'c' || nodes[position + 15].className == 'm') {
-            console.log(Math.floor((position + 15) / 15), (position + 15) % 15, originGrid[Math.floor((position + 15) / 15)][(position + 15) % 15]);
+            // console.log(Math.floor((position + 15) / 15), (position + 15) % 15, originGrid[Math.floor((position + 15) / 15)][(position + 15) % 15]);
             originGrid[Math.floor((position + 15) / 15)][(position + 15) % 15] = 'c'
             this.#boom(nodes[position + 15])
         }
@@ -85,14 +89,14 @@ export class Bomb {
         }
 
         // On kill l'ennemi s'il est dans les parages, à i=0 on a l'acteur
-        console.log('Avatar lenght', avatarPos);
+        // console.log('Avatar lenght', avatarPos);
         for (let i = 1; i < avatarPos.length; i++) {
-            if (avatarPos[i] == position + 1 || avatarPos[i] == position - 1 || avatarPos[i] == position + 15 || avatarPos[i] == position - 15 || avatarPos[i] == position) {
+            if ((avatarPos[i] == position + 1 || avatarPos[i] == position - 1 || avatarPos[i] == position + 15 || avatarPos[i] == position - 15 || avatarPos[i] == position) && arrayOfGhost[i - 1].life != 0) {
                 allAvatar[i].style.display = 'none'
-                console.log(arrayOfGhost[i - 1].life);
                 arrayOfGhost[i - 1].life = 0
                 cancelAnimationFrame(intervalIDs[i - 1])
                 deathCounter++
+                console.log(deathCounter);
                 if (deathCounter === arrayOfGhost.length ){
                     winner()
                 }
