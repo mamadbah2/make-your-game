@@ -5,6 +5,7 @@ import { updateLifeScore, chronometre, domLifeScore, domNombreBombe } from "./in
 import { ajoutPowersUp } from "./component/powerUp.js";
 import { pauseGame } from "./interface/menuPause.js";
 
+
 grid();
 chronometre();
 ajoutPowersUp();

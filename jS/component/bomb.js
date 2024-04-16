@@ -2,6 +2,7 @@ import { originGrid } from "./grid.js"
 import { updateLifeScore, updateScore } from "../interface/barreScore.js"
 import { arrayOfGhost, intervalIDs } from "./avatar.js"
 import { gameOver, winner } from "../interface/menuPause.js"
+import { playSound } from "../interface/sound.js"
 
 let deathCounter = 0
 export class Bomb {
@@ -53,6 +54,9 @@ export class Bomb {
             let xAvat = parseInt(xyAvatar[0]), yAvat = parseInt(xyAvatar[1])
             avatarPos.push((((yAvat + 40) / 40) * 16) + (xAvat / 40) - (yAvat / 40) - 16)
         }
+
+        // jouer le son de l'exposion
+        playSound('sound_bomb.mp3')
 
         // Cassage des murs etc
         this.#boom(nodes[position])

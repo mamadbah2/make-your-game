@@ -7,13 +7,13 @@
     <title>BOMBERMAN</title>
 </head>
 <body>
-    <audio id="backgroundMusic" src="assets/title-screen.mp3" loop></audio>
+    <audio src="assets/soundEffect/title-screen.mp3" loop autoplay></audio>
     <div class="image-container">
         <img src="assets/images-removebg-preview.png" alt="Bomberman">
-    </div>
+    </div> 
     <div class="container">
         <div class="button-container">
-            <button class="transparent-button" id="playButton">
+            <button class="transparent-button" id="playButton" style="margin-right: 100px;">
                 <span>
                     <svg stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor"
                         fill="none" class="w-5 h-5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -24,16 +24,6 @@
                     <h2 class="tes1">Play Game</h2>
                 </span>
             </button>
-            </br></br>
-            <div class="switch-holder">
-                <div class="switch-label">
-                    <i class="fa fa-bluetooth-b"></i><span id="soundLabel">Sound</span>
-                </div>
-                <div class="switch-toggle">
-                    <input type="checkbox" id="soundToggle">
-                    <label for="soundToggle"></label>
-                </div>
-            </div>
             <div class="button1">
                 <div class="button1-icon">
                     <div class="one"></div>
@@ -42,7 +32,6 @@
                     <div class="dots2"></div>
                 </div>
             </div>
-            <h2 class="tes">Help</h2>
         </div>
     </div>
 
