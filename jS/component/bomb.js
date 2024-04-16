@@ -15,7 +15,7 @@ export class Bomb {
     canCall = true
     poserBomb(divs, position, actor) {
         if (!this.canCall) {
-            console.log("Trop tot boy");
+            // console.log("Trop tot boy");
             return
         }
 
@@ -89,12 +89,13 @@ export class Bomb {
         for (let i = 1; i < avatarPos.length; i++) {
             if (avatarPos[i] == position + 1 || avatarPos[i] == position - 1 || avatarPos[i] == position + 15 || avatarPos[i] == position - 15 || avatarPos[i] == position) {
                 allAvatar[i].style.display = 'none'
+                console.log(arrayOfGhost[i - 1].life);
                 arrayOfGhost[i - 1].life = 0
-                clearInterval(intervalIDs[i - 1])
+                cancelAnimationFrame(intervalIDs[i - 1])
+                deathCounter++
                 if (deathCounter === arrayOfGhost.length ){
                     winner()
                 }
-                deathCounter++
             }
         }
     }

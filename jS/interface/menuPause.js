@@ -13,7 +13,7 @@ export let pause= false
 export function gameOver(lifeScore, message = '') {
     const divPause = document.getElementById('Pause')
     // J'sais pas pourquoi c'est toussss
-    if (lifeScore === 1) {
+    if (lifeScore <= 1) {
         for (let i = 0; i < intervalIDs.length; i++) {
             cancelAnimationFrame(intervalIDs[i])
         }
@@ -42,7 +42,7 @@ export function pauseGame(actor) {
         hidePauseWindow(divPause);
         document.addEventListener('keydown', keyHandler)
         pause = false
-        ennemies(actor, false)
+        // ennemies(actor, false)
         chronometre()
     })
 

@@ -7,8 +7,8 @@ import { gameOver } from "./menuPause.js"
 export let chronoId
 
 export function updateLifeScore(actor) {
-    gameOver(actor.life, "Vous n'avez plus de vie")
     setTimeout(() => {
+        gameOver(actor.life, "Vous n'avez plus de vie")
         actor.life--
         domLifeScore(actor)
     }, 100)

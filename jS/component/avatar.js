@@ -35,11 +35,7 @@ export class Avatar {
 
 
     canCall = true
-    move(avatar, key) {
-        if (!this.canCall) {
-            console.log('Bouge Pas trop vite boy');
-            return
-        }
+    move(avatar, key, bon=false) {
         let x0 = this.initX * this.#blocSize, y0 = this.initY * this.#blocSize
         switch (key) {
             case 'ArrowUp':
@@ -71,12 +67,8 @@ export class Avatar {
                 }
                 break
         }
-        this.canCall = false
-        setTimeout(() => {
-            this.canCall = true
-        }, 200)
     }
-
+    
     takePowerUpBomb(divs, bomb) {
         if (divs[this.position()].dataset.powerUp == 'bombe') {
             bomb.max += 5
@@ -116,8 +108,7 @@ export function ennemies(actor, create = true) {
             ghost.move(arrayEltGhost[index], direction[Math.floor(Math.random() * 4)])
             let posiActor = actor.position()
             let posiGhost = ghost.position()
-
-            if (posiActor == posiGhost) {
+            if (posiActor == posiGhost && arrayOfGhost[index].life != 0) {
                 updateLifeScore(actor)
             }
         }
