@@ -52,7 +52,7 @@ main div img {
 
 }
 
-.bomb {
+/* .bomb {
     animation: bombAnimate 1s infinite linear;
 }
 
@@ -68,7 +68,7 @@ main div img {
     100% {
         transform: scale(0.9);
     }
-}
+} */
 
 /* Mis en forme de la barre de score  */
 
@@ -173,7 +173,7 @@ header ul li {
     border-radius: 10px;
     color: white;
     cursor: pointer;
-    transition: 400ms;
+    /* transition: 400ms; */
 }
 
 .cards .card p.tip {
