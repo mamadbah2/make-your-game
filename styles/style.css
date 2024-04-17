@@ -53,7 +53,6 @@ main div img {
 }
 
 .bomb {
-    z-index: 50;
     animation: bombAnimate 1s infinite linear;
 }
 

@@ -8,7 +8,7 @@ import { intervalIDs } from "../component/avatar.js";
 import { argBombe, detonationID } from "../component/bomb.js";
 import { boom, keyHandler } from "../main.js";
 import { chronoId, chronometre } from "./barreScore.js";
-export let pause= false
+export let pause = false
 
 
 export function gameOver(lifeScore, message = '') {
@@ -23,7 +23,7 @@ export function gameOver(lifeScore, message = '') {
         document.removeEventListener('keydown', keyHandler)
         document.querySelector('#chronometre').innerHTML = 'Time : <span>00:00</span> '
         showGameOverWindow(divPause, message)
-        divPause.querySelector('#Restart').addEventListener('click', ()=> {
+        divPause.querySelector('#Restart').addEventListener('click', () => {
             location.reload()
         })
     }
@@ -41,16 +41,18 @@ export function pauseGame(actor) {
     document.removeEventListener('keydown', keyHandler)
     clearTimeout(detonationID)
 
-    divPause.querySelector('#Resume').addEventListener('click', ()=> {
+    divPause.querySelector('#Resume').addEventListener('click', () => {
         hidePauseWindow(divPause);
         document.addEventListener('keydown', keyHandler)
         pause = false
-        boom.max++
-        boom.poserBomb(...argBombe, actor)
+        if (argBombe.length != 0) {
+            boom.max++
+            boom.poserBomb(...argBombe, actor)
+        }
         chronometre()
     })
 
-    divPause.querySelector('#Restart').addEventListener('click', ()=> {
+    divPause.querySelector('#Restart').addEventListener('click', () => {
         location.reload()
     })
 }
@@ -58,7 +60,7 @@ export function pauseGame(actor) {
 export function winner() {
     const divPause = document.getElementById('Pause')
     const score = document.querySelector('#score span')
-    let valueScore = parseInt(score.textContent) 
+    let valueScore = parseInt(score.textContent)
     for (let i = 0; i < intervalIDs.length; i++) {
         cancelAnimationFrame(intervalIDs[i])
     }
@@ -66,7 +68,7 @@ export function winner() {
     clearInterval(chronoId)
     showWinnerWindow(divPause, valueScore)
     document.removeEventListener('keydown', keyHandler)
-    divPause.querySelector('#Restart').addEventListener('click', ()=> {
+    divPause.querySelector('#Restart').addEventListener('click', () => {
         location.reload()
     })
 }
