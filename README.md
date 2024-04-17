@@ -6,7 +6,7 @@ Ce projet est une version simplifiée du jeu classique Bomberman développée en
 ## Fonctionnalités
 - Déplacement du personnage avec les touches directionnelles (haut, bas, gauche, droite).
 - Placement de bombes avec la touche espace.
-- Mettre en pause le jeu grace à la touch 'p' du clavier.
+- Mettre en pause le jeu grace à la touch 'ESC' du clavier.
 - Gestion des collisions et des règles du jeu.
 
 ## Comment jouer
